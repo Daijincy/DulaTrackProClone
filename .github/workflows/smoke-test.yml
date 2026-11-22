@@ -71,14 +71,23 @@ jobs:
           done
           kill $BOOT_PID 2>/dev/null || true
           cat boot.log || true
-          echo "Waiting for SpringBoard to settle..."
+          echo "Opening Simulator app to bring up SpringBoard..."
+          open -a Simulator --args -CurrentDeviceUDID "$DEVICE" || true
           sleep 60
 
           APP=$(find build/Build/Products/Debug-iphonesimulator -maxdepth 1 -name "*.app" | head -1)
           echo "App: $APP"
           perl -e 'alarm shift; exec @ARGV' 120 xcrun simctl install "$DEVICE" "$APP" || echo "INSTALL_FAILED"
-          perl -e 'alarm shift; exec @ARGV' 180 xcrun simctl launch "$DEVICE" "$BUNDLE_ID" || echo "LAUNCH_FAILED"
-          sleep 15
+
+          echo "=== control: launch Safari ==="
+          perl -e 'alarm shift; exec @ARGV' 45 xcrun simctl launch "$DEVICE" com.apple.mobilesafari || echo "SAFARI_LAUNCH_FAILED"
+          sleep 5
+          pgrep -fl "MobileSafari" | head -3 || echo "SAFARI_NOT_RUNNING"
+
+          echo "=== launch our app with console ==="
+          perl -e 'alarm shift; exec @ARGV' 90 xcrun simctl launch --console-pty "$DEVICE" "$BUNDLE_ID" > app_console.log 2>&1 || echo "APP_CONSOLE_TIMEOUT"
+          head -80 app_console.log || true
+          sleep 8
 
           echo "=== process alive check ==="
           pgrep -fl "DulaTrackProClone.app/DulaTrackProClone" || echo "APP_PROCESS_NOT_FOUND"
