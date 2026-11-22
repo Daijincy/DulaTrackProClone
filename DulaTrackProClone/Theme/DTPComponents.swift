@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: - 玻璃卡片
 
-final class DTPGlassCard: UIView {
+class DTPGlassCard: UIView {
 
     let contentView = UIView()
     private let glass: UIVisualEffectView

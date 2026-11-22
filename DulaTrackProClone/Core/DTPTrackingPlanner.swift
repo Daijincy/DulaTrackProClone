@@ -86,7 +86,7 @@ final class DTPTrackingPlanner {
         Task.detached(priority: .userInitiated) { [weak self] in
             guard let self else { return }
             do {
-                let plan = try await self.makePlan(asset: asset, options: options, progress: progress)
+                let plan = try await self.makePlan(for: asset, options: options, progress: progress)
                 await MainActor.run { completion(.success(plan)) }
             } catch {
                 await MainActor.run { completion(.failure(error)) }
