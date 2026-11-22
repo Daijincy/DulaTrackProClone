@@ -105,8 +105,10 @@ final class DTPGlassButton: UIControl {
         highlightView.backgroundColor = .white
         highlightView.alpha = 0
         highlightView.isUserInteractionEnabled = false
-        baseView.addSubview(highlightView)
-        highlightView.dtpPin(to: baseView)
+        // UIVisualEffectView 的子视图必须加在 contentView 上，直接 addSubview 会触发断言崩溃
+        let highlightHost = effectView?.contentView ?? baseView
+        highlightHost.addSubview(highlightView)
+        highlightView.dtpPin(to: highlightHost)
 
         titleLabel.text = title
         titleLabel.font = DTPTheme.rounded(16, .semibold)
