@@ -1,0 +1,378 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B829E456D2AB1C30081FF7DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2180501277D994CF8632F9B4 /* AppDelegate.swift */; };
+		325BBAFD4FD4ECF8A628060A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ADA185046770DD07D64868 /* SceneDelegate.swift */; };
+		559F60628105D22F9B6A2D2B /* DTPTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55C7CCC6DD0B8E854D0B81F /* DTPTheme.swift */; };
+		7B62AB05B73258C0A909BC91 /* DTPGlass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CFA79A6FA7D46BCCF0191 /* DTPGlass.swift */; };
+		FE61EBD27F92B134BCD39018 /* DTPComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD3CB8472218C677F86BE6C /* DTPComponents.swift */; };
+		606D77AAB98BD3412D6D50BB /* DTPSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D22C3C0F19BAA67D514AE2 /* DTPSettings.swift */; };
+		F996B0B4A94563C462CD00F3 /* DTPProjectStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C2EECC37538F6A21BAB005 /* DTPProjectStore.swift */; };
+		628C7A986FB7E73EE4E16D93 /* DTPMediaImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1860AA56A4742A4A0479AB2 /* DTPMediaImporter.swift */; };
+		43E8B2E62E40E9C05C0B05E7 /* DTPSubjectDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AC93AF88913DF0DD7F6B9B /* DTPSubjectDetector.swift */; };
+		880C7E19FFCD5810F1F3EF7E /* DTPTrackingPlanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63A4726660537389AAA8BBE /* DTPTrackingPlanner.swift */; };
+		D3AF065CA1469418DD6EF353 /* DTPVideoExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929116560EA684CCC08677D3 /* DTPVideoExporter.swift */; };
+		FCC207E4797F6221CF73F6B2 /* DTPCameraRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497461A9EAF585AF448AC7E5 /* DTPCameraRecorder.swift */; };
+		49CC392BE19F4854D50F7164 /* DTPRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8EEFA30C30BB931A074EDB /* DTPRootController.swift */; };
+		92F9EDE0259AD49389C9642A /* DTPHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84457C039DB2F0C013A13389 /* DTPHomeViewController.swift */; };
+		BB987DBC8D0DBB7F82436D4E /* DTPEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB400B1DDFE9029531494692 /* DTPEditorViewController.swift */; };
+		9AF857D94CA4BE70D5CABC6A /* DTPCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23357BE86C35867B75611E9D /* DTPCameraViewController.swift */; };
+		D6317B1F6D586B3847E1623D /* DTPBatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B119D34090A65EB4F0891C /* DTPBatchViewController.swift */; };
+		3C327FDB007634465B9D385E /* DTPSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D37149F7BFD3E4108A510E /* DTPSettingsViewController.swift */; };
+		20DDA1EF970C365A16F71374 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 456F1956E1ADC231C7C315E6 /* Assets.xcassets */; };
+		E0994319706121E8F6AA7AEC /* DulaAIContentDetector_CurrentBest_iOS.mlmodelc in Resources */ = {isa = PBXBuildFile; fileRef = 7DE92A6E90319711839197B5 /* DulaAIContentDetector_CurrentBest_iOS.mlmodelc */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F5BF48AA40CAD7891EB709FC /* DulaTrackProClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DulaTrackProClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2180501277D994CF8632F9B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F3ADA185046770DD07D64868 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		C55C7CCC6DD0B8E854D0B81F /* DTPTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTPTheme.swift; sourceTree = "<group>"; };
+		900CFA79A6FA7D46BCCF0191 /* DTPGlass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTPGlass.swift; sourceTree = "<group>"; };
+		2DD3CB8472218C677F86BE6C /* DTPComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTPComponents.swift; sourceTree = "<group>"; };
+		45D22C3C0F19BAA67D514AE2 /* DTPSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTPSettings.swift; sourceTree = "<group>"; };
+		02C2EECC37538F6A21BAB005 /* DTPProjectStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTPProjectStore.swift; sourceTree = "<group>"; };
+		E1860AA56A4742A4A0479AB2 /* DTPMediaImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTPMediaImporter.swift; sourceTree = "<group>"; };
+		08AC93AF88913DF0DD7F6B9B /* DTPSubjectDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTPSubjectDetector.swift; sourceTree = "<group>"; };
+		D63A4726660537389AAA8BBE /* DTPTrackingPlanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTPTrackingPlanner.swift; sourceTree = "<group>"; };
+		929116560EA684CCC08677D3 /* DTPVideoExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTPVideoExporter.swift; sourceTree = "<group>"; };
+		497461A9EAF585AF448AC7E5 /* DTPCameraRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTPCameraRecorder.swift; sourceTree = "<group>"; };
+		2C8EEFA30C30BB931A074EDB /* DTPRootController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTPRootController.swift; sourceTree = "<group>"; };
+		84457C039DB2F0C013A13389 /* DTPHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTPHomeViewController.swift; sourceTree = "<group>"; };
+		EB400B1DDFE9029531494692 /* DTPEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTPEditorViewController.swift; sourceTree = "<group>"; };
+		23357BE86C35867B75611E9D /* DTPCameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTPCameraViewController.swift; sourceTree = "<group>"; };
+		A0B119D34090A65EB4F0891C /* DTPBatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTPBatchViewController.swift; sourceTree = "<group>"; };
+		D2D37149F7BFD3E4108A510E /* DTPSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTPSettingsViewController.swift; sourceTree = "<group>"; };
+		16213826289527B5B17EBF46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		456F1956E1ADC231C7C315E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7DE92A6E90319711839197B5 /* DulaAIContentDetector_CurrentBest_iOS.mlmodelc */ = {isa = PBXFileReference; lastKnownFileType = folder; path = DulaAIContentDetector_CurrentBest_iOS.mlmodelc; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4F6F5CC3FCCF73F75AE9CCF4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8D3FC6DB5D0827F168A73277 = {
+			isa = PBXGroup;
+			children = (
+				CE882751F8B3EE4485706ED4 /* DulaTrackProClone */,
+				1BADDC1D73C1A20F347483E1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1BADDC1D73C1A20F347483E1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F5BF48AA40CAD7891EB709FC /* DulaTrackProClone.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CE882751F8B3EE4485706ED4 /* DulaTrackProClone */ = {
+			isa = PBXGroup;
+			children = (
+				2180501277D994CF8632F9B4 /* AppDelegate.swift */,
+				F3ADA185046770DD07D64868 /* SceneDelegate.swift */,
+				16213826289527B5B17EBF46 /* Info.plist */,
+				456F1956E1ADC231C7C315E6 /* Assets.xcassets */,
+				73212FB8080CAC21C23735D8 /* Theme */,
+				5962BE15CB590FCD4D0ACFA1 /* Core */,
+				CA79377A86F72695210905D1 /* UI */,
+				0C289804BCCAA60E950275B5 /* Resources */,
+			);
+			path = DulaTrackProClone;
+			sourceTree = "<group>";
+		};
+		73212FB8080CAC21C23735D8 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				C55C7CCC6DD0B8E854D0B81F /* DTPTheme.swift */,
+				900CFA79A6FA7D46BCCF0191 /* DTPGlass.swift */,
+				2DD3CB8472218C677F86BE6C /* DTPComponents.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		5962BE15CB590FCD4D0ACFA1 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				45D22C3C0F19BAA67D514AE2 /* DTPSettings.swift */,
+				02C2EECC37538F6A21BAB005 /* DTPProjectStore.swift */,
+				E1860AA56A4742A4A0479AB2 /* DTPMediaImporter.swift */,
+				08AC93AF88913DF0DD7F6B9B /* DTPSubjectDetector.swift */,
+				D63A4726660537389AAA8BBE /* DTPTrackingPlanner.swift */,
+				929116560EA684CCC08677D3 /* DTPVideoExporter.swift */,
+				497461A9EAF585AF448AC7E5 /* DTPCameraRecorder.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		CA79377A86F72695210905D1 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				2C8EEFA30C30BB931A074EDB /* DTPRootController.swift */,
+				84457C039DB2F0C013A13389 /* DTPHomeViewController.swift */,
+				EB400B1DDFE9029531494692 /* DTPEditorViewController.swift */,
+				23357BE86C35867B75611E9D /* DTPCameraViewController.swift */,
+				A0B119D34090A65EB4F0891C /* DTPBatchViewController.swift */,
+				D2D37149F7BFD3E4108A510E /* DTPSettingsViewController.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		0C289804BCCAA60E950275B5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7DE92A6E90319711839197B5 /* DulaAIContentDetector_CurrentBest_iOS.mlmodelc */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		42AEFBAE01D2DFD981F7DA7D /* DulaTrackProClone */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EAF116FE40D68E4ABB26094B /* Build configuration list for PBXNativeTarget "DulaTrackProClone" */;
+			buildPhases = (
+				F2AB5FB218DA8B84623F4557 /* Sources */,
+				4F6F5CC3FCCF73F75AE9CCF4 /* Frameworks */,
+				55B558C7EF820E6E00E5993B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DulaTrackProClone;
+			productName = DulaTrackProClone;
+			productReference = F5BF48AA40CAD7891EB709FC /* DulaTrackProClone.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		46F86FAA6BBF9AC94A7E4595 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2600;
+				LastUpgradeCheck = 2600;
+				TargetAttributes = {
+					42AEFBAE01D2DFD981F7DA7D = {
+						CreatedOnToolsVersion = 26.0;
+					};
+				};
+			};
+			buildConfigurationList = 56283EBD6DD86A56CED63937 /* Build configuration list for PBXProject "DulaTrackProClone" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				"zh-Hans",
+			);
+			mainGroup = 8D3FC6DB5D0827F168A73277;
+			productRefGroup = 1BADDC1D73C1A20F347483E1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				42AEFBAE01D2DFD981F7DA7D /* DulaTrackProClone */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		55B558C7EF820E6E00E5993B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20DDA1EF970C365A16F71374 /* Assets.xcassets in Resources */,
+				E0994319706121E8F6AA7AEC /* DulaAIContentDetector_CurrentBest_iOS.mlmodelc in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F2AB5FB218DA8B84623F4557 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B829E456D2AB1C30081FF7DC /* AppDelegate.swift in Sources */,
+				325BBAFD4FD4ECF8A628060A /* SceneDelegate.swift in Sources */,
+				559F60628105D22F9B6A2D2B /* DTPTheme.swift in Sources */,
+				7B62AB05B73258C0A909BC91 /* DTPGlass.swift in Sources */,
+				FE61EBD27F92B134BCD39018 /* DTPComponents.swift in Sources */,
+				606D77AAB98BD3412D6D50BB /* DTPSettings.swift in Sources */,
+				F996B0B4A94563C462CD00F3 /* DTPProjectStore.swift in Sources */,
+				628C7A986FB7E73EE4E16D93 /* DTPMediaImporter.swift in Sources */,
+				43E8B2E62E40E9C05C0B05E7 /* DTPSubjectDetector.swift in Sources */,
+				880C7E19FFCD5810F1F3EF7E /* DTPTrackingPlanner.swift in Sources */,
+				D3AF065CA1469418DD6EF353 /* DTPVideoExporter.swift in Sources */,
+				FCC207E4797F6221CF73F6B2 /* DTPCameraRecorder.swift in Sources */,
+				49CC392BE19F4854D50F7164 /* DTPRootController.swift in Sources */,
+				92F9EDE0259AD49389C9642A /* DTPHomeViewController.swift in Sources */,
+				BB987DBC8D0DBB7F82436D4E /* DTPEditorViewController.swift in Sources */,
+				9AF857D94CA4BE70D5CABC6A /* DTPCameraViewController.swift in Sources */,
+				D6317B1F6D586B3847E1623D /* DTPBatchViewController.swift in Sources */,
+				3C327FDB007634465B9D385E /* DTPSettingsViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		FA9139DD8B03E3F922556BF8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FFE2104CCFAB79205AC64460 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D8579749783A718541606A67 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = DulaTrackProClone/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.8;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dula.trackpro.clone;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		553194FECB7E1C4EBBAFB6CE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = DulaTrackProClone/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.8;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dula.trackpro.clone;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		56283EBD6DD86A56CED63937 /* Build configuration list for PBXProject "DulaTrackProClone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA9139DD8B03E3F922556BF8 /* Debug */,
+				FFE2104CCFAB79205AC64460 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EAF116FE40D68E4ABB26094B /* Build configuration list for PBXNativeTarget "DulaTrackProClone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D8579749783A718541606A67 /* Debug */,
+				553194FECB7E1C4EBBAFB6CE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = 46F86FAA6BBF9AC94A7E4595 /* Project object */;
+}

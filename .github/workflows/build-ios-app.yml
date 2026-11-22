@@ -1,0 +1,79 @@
+name: Build DulaTrackProClone
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - "DulaTrackProClone/**"
+      - "DulaTrackProClone.xcodeproj/**"
+      - ".github/workflows/build-ios-app.yml"
+  workflow_dispatch:
+  release:
+    types: [ published ]
+
+jobs:
+  build:
+    runs-on: macos-15
+
+    env:
+      PROJECT: DulaTrackProClone.xcodeproj
+      TARGET: DulaTrackProClone
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Select newest Xcode
+        run: |
+          LATEST=$(ls -d /Applications/Xcode*.app | sort -V | tail -1)
+          echo "Using $LATEST"
+          sudo xcode-select -s "$LATEST"
+          xcodebuild -version
+
+      - name: Build for simulator (compile check)
+        run: |
+          xcodebuild \
+            -project "$PROJECT" \
+            -target "$TARGET" \
+            -configuration Release \
+            -sdk iphonesimulator \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO \
+            build
+
+      - name: Build unsigned device app
+        run: |
+          xcodebuild \
+            -project "$PROJECT" \
+            -target "$TARGET" \
+            -configuration Release \
+            -sdk iphoneos \
+            -derivedDataPath build \
+            ARCHS=arm64 \
+            ONLY_ACTIVE_ARCH=NO \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            build
+
+      - name: Package unsigned IPA
+        run: |
+          APP=$(find build/Build/Products/Release-iphoneos -name "*.app" -maxdepth 1 | head -1)
+          echo "App: $APP"
+          mkdir -p out/Payload
+          cp -R "$APP" out/Payload/
+          cd out && zip -qry ../DulaTrackProClone-unsigned.ipa Payload
+          cd .. && ls -lh DulaTrackProClone-unsigned.ipa
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: DulaTrackProClone-unsigned-ipa
+          path: DulaTrackProClone-unsigned.ipa
+          if-no-files-found: error
+
+      - name: Attach to GitHub Release
+        if: github.event_name == 'release'
+        uses: softprops/action-gh-release@v2
+        with:
+          files: DulaTrackProClone-unsigned.ipa

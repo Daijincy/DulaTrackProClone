@@ -1,0 +1,16 @@
+# 不把原始包/解包产物/分析中间件推到仓库
+*.ipa
+*.app/
+extracted/
+recovered/
+dylib/*.dylib
+__pycache__/
+.DS_Store
+
+# Xcode
+build/
+DerivedData/
+xcuserdata/
+*.xcuserstate
+*.xcscmblueprint
+

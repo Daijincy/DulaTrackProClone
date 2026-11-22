@@ -1,0 +1,171 @@
+[
+  {
+    "shortDescription" : "DulaAI current-best iOS content detector raw-head model. Input: RGB NCHW 1x3x768x768, values 0...255. Wrapper performs \/255 and mean\/std normalization. Outputs raw cls\/box\/centerness tensors for strides 8,16,32.",
+    "metadataOutputVersion" : "3.0",
+    "outputSchema" : [
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 20 × 96 × 96)",
+        "shortDescription" : "",
+        "shape" : "[1, 20, 96, 96]",
+        "name" : "cls_s8",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 20 × 48 × 48)",
+        "shortDescription" : "",
+        "shape" : "[1, 20, 48, 48]",
+        "name" : "cls_s16",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 20 × 24 × 24)",
+        "shortDescription" : "",
+        "shape" : "[1, 20, 24, 24]",
+        "name" : "cls_s32",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 4 × 96 × 96)",
+        "shortDescription" : "",
+        "shape" : "[1, 4, 96, 96]",
+        "name" : "box_s8",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 4 × 48 × 48)",
+        "shortDescription" : "",
+        "shape" : "[1, 4, 48, 48]",
+        "name" : "box_s16",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 4 × 24 × 24)",
+        "shortDescription" : "",
+        "shape" : "[1, 4, 24, 24]",
+        "name" : "box_s32",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 96 × 96)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 96, 96]",
+        "name" : "centerness_s8",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 48 × 48)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 48, 48]",
+        "name" : "centerness_s16",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 24 × 24)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 24, 24]",
+        "name" : "centerness_s32",
+        "type" : "MultiArray"
+      }
+    ],
+    "version" : "64dce4c6840185ee56b99f2b",
+    "modelParameters" : [
+
+    ],
+    "author" : "DulaAI \/ Dula Auto Clip",
+    "specificationVersion" : 7,
+    "storagePrecision" : "Float16",
+    "license" : "DulaAI proprietary internal deployment artifact",
+    "mlProgramOperationTypeHistogram" : {
+      "Ios16.cast" : 1,
+      "Ios16.mul" : 2,
+      "Ios16.sub" : 13,
+      "Ios16.sqrt" : 12,
+      "UpsampleNearestNeighbor" : 2,
+      "Ios16.square" : 12,
+      "Ios16.add" : 22,
+      "Ios16.realDiv" : 12,
+      "Ios16.reduceMean" : 24,
+      "Ios16.conv" : 56,
+      "Ios16.batchNorm" : 12,
+      "Ios16.reshape" : 24,
+      "Ios16.silu" : 44
+    },
+    "computePrecision" : "Mixed (Float16, Float32, Int32)",
+    "stateSchema" : [
+
+    ],
+    "isUpdatable" : "0",
+    "availability" : {
+      "macOS" : "13.0",
+      "tvOS" : "16.0",
+      "visionOS" : "1.0",
+      "watchOS" : "9.0",
+      "iOS" : "16.0",
+      "macCatalyst" : "16.0"
+    },
+    "modelType" : {
+      "name" : "MLModelType_mlProgram"
+    },
+    "inputSchema" : [
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float32",
+        "formattedType" : "MultiArray (Float32 1 × 3 × 768 × 768)",
+        "shortDescription" : "",
+        "shape" : "[1, 3, 768, 768]",
+        "name" : "image",
+        "type" : "MultiArray"
+      }
+    ],
+    "userDefinedMetadata" : {
+      "com.dulaai.output_layout" : "cls_s8,cls_s16,cls_s32,box_s8,box_s16,box_s32,centerness_s8,centerness_s16,centerness_s32",
+      "com.dulaai.class_names_json" : "[\"按钮\", \"车标\", \"车牌\", \"出风口\", \"多媒体屏幕\", \"方向盘\", \"后车灯\", \"后视镜\", \"轮胎\", \"门把手\", \"排挡杆\", \"排气管\", \"品牌LOGO\", \"汽车\", \"汽车内部前排\", \"前车灯\", \"人物\", \"头\", \"雾灯\", \"字母\"]",
+      "com.dulaai.targetness_quality_power" : "1.12",
+      "com.dulaai.model_uid" : "64dce4c6840185ee56b99f2b",
+      "com.dulaai.format_version" : "2",
+      "com.github.apple.coremltools.version" : "9.0",
+      "com.dulaai.backend" : "dula_clipai_content_detector_v1",
+      "com.dulaai.weight_fingerprint" : "865e6dd52ec0347b117a0f2cd309905806bff53b2346b60c5c840a6890be8105",
+      "com.dulaai.image_size" : "768",
+      "com.dulaai.family" : "DulaClipAI",
+      "com.github.apple.coremltools.conversion_date" : "2026-06-14",
+      "com.dulaai.authorized_product" : "Dula Auto Clip",
+      "com.dulaai.box_format" : "fcos_ltrb_distance_v1",
+      "com.github.apple.coremltools.source_dialect" : "TorchScript",
+      "com.github.apple.coremltools.source" : "torch==2.8.0",
+      "com.dulaai.brand" : "DulaAI",
+      "com.dulaai.source_pt" : "DulaOD_当前最佳_全部类别_best.pt",
+      "com.dulaai.input_preprocess" : "rgb_nchw_0_255_internal_div255_mean_std"
+    },
+    "generatedClassName" : "DulaAIContentDetector_CurrentBest_iOS",
+    "method" : "predict"
+  }
+]
