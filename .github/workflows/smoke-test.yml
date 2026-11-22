@@ -59,33 +59,45 @@ jobs:
           print(best)
           ")
           echo "Device: $DEVICE"
-          xcrun simctl boot "$DEVICE" || true
-          xcrun simctl bootstatus "$DEVICE" -b
+          echo "DEVICE=$DEVICE" >> "$GITHUB_ENV"
+
+          xcrun simctl boot "$DEVICE" > boot.log 2>&1 &
+          BOOT_PID=$!
+          for i in $(seq 1 40); do
+            if xcrun simctl list devices | grep "$DEVICE" | grep -q "Booted"; then
+              echo "Booted after $((i*3))s"; break
+            fi
+            sleep 3
+          done
+          kill $BOOT_PID 2>/dev/null || true
+          cat boot.log || true
+
           APP=$(find build/Build/Products/Debug-iphonesimulator -maxdepth 1 -name "*.app" | head -1)
           echo "App: $APP"
-          xcrun simctl install "$DEVICE" "$APP"
-          xcrun simctl launch "$DEVICE" "$BUNDLE_ID" || true
-          sleep 8
-          echo "=== running processes ==="
-          xcrun simctl spawn "$DEVICE" launchctl list | grep -i "dulatrack" || echo "APP_NOT_RUNNING"
-          echo "DEVICE=$DEVICE" >> "$GITHUB_ENV"
+          perl -e 'alarm shift; exec @ARGV' 120 xcrun simctl install "$DEVICE" "$APP" || echo "INSTALL_FAILED"
+          perl -e 'alarm shift; exec @ARGV' 60 xcrun simctl launch "$DEVICE" "$BUNDLE_ID" || echo "LAUNCH_FAILED"
+          sleep 10
+
+          echo "=== crash reports (last 3 min) ==="
+          find ~/Library/Logs/DiagnosticReports -name "DulaTrackProClone*" -newermt "-3 minutes" -print || true
+
 
       - name: Collect logs and crash reports
         if: always()
         run: |
           mkdir -p smoke-logs
-          xcrun simctl spawn "$DEVICE" log show --style compact --last 3m \
+          perl -e 'alarm shift; exec @ARGV' 180 xcrun simctl spawn "$DEVICE" log show --style compact --last 3m \
             --predicate 'process == "DulaTrackProClone" OR eventMessage CONTAINS "DulaTrackProClone"' \
             > smoke-logs/app.log 2>&1 || true
-          cp ~/Library/Logs/DiagnosticReports/*.ips smoke-logs/ 2>/dev/null || true
+          cp ~/Library/Logs/DiagnosticReports/DulaTrackProClone*.ips smoke-logs/ 2>/dev/null || true
           echo "=== crash reports ==="
           ls -lt smoke-logs/*.ips 2>/dev/null | head -5 || echo "no crash report"
           for f in $(ls -t smoke-logs/*.ips 2>/dev/null | head -1); do
             echo "===== $f ====="
-            head -c 12000 "$f"
+            head -200 "$f"
           done || true
           echo "=== app log tail ==="
-          tail -60 smoke-logs/app.log || true
+          tail -80 smoke-logs/app.log || true
 
       - name: Upload smoke logs
         if: always()
