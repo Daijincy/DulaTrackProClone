@@ -71,13 +71,17 @@ jobs:
           done
           kill $BOOT_PID 2>/dev/null || true
           cat boot.log || true
+          echo "Waiting for SpringBoard to settle..."
+          sleep 60
 
           APP=$(find build/Build/Products/Debug-iphonesimulator -maxdepth 1 -name "*.app" | head -1)
           echo "App: $APP"
           perl -e 'alarm shift; exec @ARGV' 120 xcrun simctl install "$DEVICE" "$APP" || echo "INSTALL_FAILED"
-          perl -e 'alarm shift; exec @ARGV' 60 xcrun simctl launch "$DEVICE" "$BUNDLE_ID" || echo "LAUNCH_FAILED"
-          sleep 10
+          perl -e 'alarm shift; exec @ARGV' 180 xcrun simctl launch "$DEVICE" "$BUNDLE_ID" || echo "LAUNCH_FAILED"
+          sleep 15
 
+          echo "=== process alive check ==="
+          pgrep -fl "DulaTrackProClone.app/DulaTrackProClone" || echo "APP_PROCESS_NOT_FOUND"
           echo "=== crash reports (last 3 min) ==="
           find ~/Library/Logs/DiagnosticReports -name "DulaTrackProClone*" -newermt "-3 minutes" -print || true
 
