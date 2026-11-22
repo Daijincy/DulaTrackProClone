@@ -1,0 +1,96 @@
+name: Smoke Test (simulator launch)
+
+on:
+  push:
+    paths:
+      - ".github/workflows/smoke-test.yml"
+  workflow_dispatch:
+
+jobs:
+  smoke:
+    runs-on: macos-15
+
+    env:
+      PROJECT: DulaTrackProClone.xcodeproj
+      TARGET: DulaTrackProClone
+      BUNDLE_ID: com.dula.trackpro.clone
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Select newest Xcode
+        run: |
+          LATEST=$(ls -d /Applications/Xcode*.app | sort -V | tail -1)
+          sudo xcode-select -s "$LATEST"
+          xcodebuild -version
+
+      - name: Build for simulator
+        run: |
+          xcodebuild \
+            -project "$PROJECT" \
+            -scheme "$TARGET" \
+            -configuration Debug \
+            -sdk iphonesimulator \
+            -destination 'generic/platform=iOS Simulator' \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO \
+            build
+
+      - name: Boot simulator and launch app
+        id: launch
+        run: |
+          DEVICE=$(xcrun simctl list devices available -j | python3 -c "
+          import json,sys
+          d=json.load(sys.stdin)['devices']
+          best=''
+          for runtime,devs in d.items():
+              if 'iOS-26' in runtime:
+                  for dev in devs:
+                      if dev['name'].startswith('iPhone'):
+                          best=dev['udid']; break
+              if best: break
+          if not best:
+              for runtime,devs in d.items():
+                  for dev in devs:
+                      if dev['name'].startswith('iPhone'):
+                          best=dev['udid']; break
+                  if best: break
+          print(best)
+          ")
+          echo "Device: $DEVICE"
+          xcrun simctl boot "$DEVICE" || true
+          xcrun simctl bootstatus "$DEVICE" -b
+          APP=$(find build/Build/Products/Debug-iphonesimulator -maxdepth 1 -name "*.app" | head -1)
+          echo "App: $APP"
+          xcrun simctl install "$DEVICE" "$APP"
+          xcrun simctl launch "$DEVICE" "$BUNDLE_ID" || true
+          sleep 8
+          echo "=== running processes ==="
+          xcrun simctl spawn "$DEVICE" launchctl list | grep -i "dulatrack" || echo "APP_NOT_RUNNING"
+          echo "DEVICE=$DEVICE" >> "$GITHUB_ENV"
+
+      - name: Collect logs and crash reports
+        if: always()
+        run: |
+          mkdir -p smoke-logs
+          xcrun simctl spawn "$DEVICE" log show --style compact --last 3m \
+            --predicate 'process == "DulaTrackProClone" OR eventMessage CONTAINS "DulaTrackProClone"' \
+            > smoke-logs/app.log 2>&1 || true
+          cp ~/Library/Logs/DiagnosticReports/*.ips smoke-logs/ 2>/dev/null || true
+          echo "=== crash reports ==="
+          ls -lt smoke-logs/*.ips 2>/dev/null | head -5 || echo "no crash report"
+          for f in $(ls -t smoke-logs/*.ips 2>/dev/null | head -1); do
+            echo "===== $f ====="
+            head -c 12000 "$f"
+          done || true
+          echo "=== app log tail ==="
+          tail -60 smoke-logs/app.log || true
+
+      - name: Upload smoke logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: smoke-logs
+          path: smoke-logs/
+          if-no-files-found: warn
